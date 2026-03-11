@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Task;
 use App\Models\User;
+use App\Notifications\PushToTask;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
@@ -48,6 +49,13 @@ class TaskController extends Controller
 
         // In Zwischentabelle schreiben
         $task->users()->attach($request->input('users'));
+
+        foreach($request->input('users') as $userId)
+            {
+                $user = User::find($userId);//where('id',$userId)->get();
+                $user->notify(new PushToTask($task));
+                // $userId->notify();
+            }
 
         return redirect('/tasks')->with('success', 'Task wurde erstellt.');
     }
