@@ -8,6 +8,13 @@
     @else
     -
     @endisset</p>
+    <div class="">
+        @foreach ($task->users as $user )
+        <ul>    
+        <li><span>{{ $user->name}}</span> (<a href="mailto:{{$user->email}}">{{$user->email}}</a>)</li>
+        </ul>
+        @endforeach
+    </div>
     <p><strong>Notizen:</strong><br>{{ $task->notes ?? '—' }}</p>{{-- Null coalescing Operator --}}
 
     <p>

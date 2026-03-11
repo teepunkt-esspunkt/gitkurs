@@ -13,17 +13,17 @@ class TaskController extends Controller
     public function index()
     {
         //$tasks = Task::where('user_id',Auth::id())->orderBy('due_date')->paginate(10); 
-        // if(request()->has('suche'))
-        // {
-        //     $suche = request()->suche;
-        //     $tasks = Auth::user()->tasks()->where('title','LIKE',"%$suche%")->paginate(10);
-        // }
-        // else
-        // {
-        //     $tasks = Auth::user()->tasks()->paginate(10);
-        // }
-        $tasks = Task::paginate(10);
-       
+        if(request()->has('suche'))
+        {
+            $suche = request()->suche;
+            $tasks = Task::where('title','LIKE',"%$suche%")->paginate(10);
+        }
+        else
+        {
+            // $tasks = Auth::user()->tasks()->paginate(10);
+            $tasks = Task::paginate(10);
+        }
+        // $tasks = Task::paginate(10);
         return view('tasks.index', ['tasks' => $tasks]);
     }
 

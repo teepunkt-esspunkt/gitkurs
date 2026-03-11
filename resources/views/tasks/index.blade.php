@@ -14,6 +14,7 @@
                 <th>Titel</th>
                 <th>Status</th>
                 <th>Fällig</th>
+                <th>Users</th>
                 <th>Aktionen</th>
             </tr>
         </thead>
@@ -27,6 +28,13 @@
                     @else
                     -
                     @endisset</td>
+                    <td>
+                        <ul style="font-size: 12px;list-style-type:square">
+                        @foreach ($task->users as $user )
+                           <li> {{ $user->name }} </li>
+                        @endforeach
+                        </ul>
+                    </td>
                 <td style="white-space:nowrap;">
                     <a href="/tasks/{{$task->id}}">Show</a> |
                     <a href="/tasks/{{$task->id}}/edit">Edit</a> |
