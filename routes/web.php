@@ -37,3 +37,4 @@ Route::middleware('guest')->group(function(){
 
 // Zu Testzwecken
 Route::get("/dbtest",[DBTestController::class,'test']);
+
