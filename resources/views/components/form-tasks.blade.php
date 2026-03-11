@@ -26,4 +26,14 @@
                 <textarea id="notes" name="notes" rows="4" style="width:100%;">{{ old('notes', $task->notes) }}</textarea>
                 @error('notes') <div style="color:#b00;">{{ $message }}</div> @enderror
             </div>
+
+           <div>
+               <label for="users">Zugewiesene User</label><br>
+               <select id="users" name="users[]" multiple style="width:100%" >
+                  @foreach($users as $user)
+                    <option value="{{$user->id}}" @selected(in_array($user->id,old('users',$task->users->pluck('id')->toArray())))>
+                    {{$user->name}} - {{$user->email}}</option>
+                  @endforeach
+               </select>
+           </div> 
         </div>

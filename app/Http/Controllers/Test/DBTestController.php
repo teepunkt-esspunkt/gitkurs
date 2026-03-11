@@ -32,7 +32,7 @@ class DBTestController extends Controller
         //$ds = Task::orderBy('title')->get();
         //$ds = User::all();
         //$ds = Auth::user()->tasks;
-        $ds = Task::find(1)->user;
+        $ds = User::find(1)->tasks;
         
         return $ds;
     }

@@ -50,7 +50,7 @@ class User extends Authenticatable
     // user -> tasks
     public function tasks()
     {
-        return $this->hasMany(Task::class);
+        return $this->belongsToMany(Task::class);
     }
 
 }

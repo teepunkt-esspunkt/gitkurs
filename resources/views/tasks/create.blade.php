@@ -14,7 +14,7 @@
 
     <form method="POST" action="/tasks">
         @csrf
-        <x-form-tasks :task="$task" />
+        <x-form-tasks :task="$task" :users="$users" />
         {{-- 
                 <div style="display:grid; gap:12px; max-width:700px; margin: 12px 0;">
         <div>

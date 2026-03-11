@@ -15,7 +15,7 @@
     <form method="POST" action="/tasks/{{ $task->id }}">
         @csrf
         @method('PUT')
-       <x-form-tasks :task="$task" />
+       <x-form-tasks :task="$task" :users="$users" />
         <button type="submit">Aktualisieren</button>
         <a href="/tasks/{{ $task->id }}">Abbrechen</a>
     </form>

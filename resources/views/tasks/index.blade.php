@@ -2,6 +2,12 @@
     <h1>Tasks</h1>
 
     <p><a href="/tasks/create">+ Neue Aufgabe</a></p>
+    <div class="row">
+    <form action="/tasks" method="GET">
+    <input name="suche" type="text" placeholder="Suche..." value="{{ request()->suche }}">
+    <button type="submit">Suchen</button> <a href="/tasks">Alle anzeigen</a>
+    </form> 
+    </div>
     <table border="1" cellpadding="8" cellspacing="0" style="width:100%; border-collapse:collapse;">
         <thead>
             <tr>

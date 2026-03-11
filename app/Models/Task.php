@@ -7,7 +7,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Task extends Model
 {
-    use HasFactory;
+   use HasFactory;
+
    protected function casts(): array
     {
         return [
@@ -17,8 +18,8 @@ class Task extends Model
 
     // Relation
     // tasks->user
-    public function user()
+    public function users()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsToMany(User::class);
     }
 }
