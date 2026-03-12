@@ -37,3 +37,11 @@ Route::middleware('guest')->group(function(){
 
 // Zu Testzwecken
 Route::get("/dbtest",[DBTestController::class,'test']);
+
+
+
+Route::get('notifications/mark-as-read', function() {
+    $user = Auth::user();
+    $user->unreadNotifications->markAsRead();
+    return back();
+});

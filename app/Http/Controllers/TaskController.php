@@ -91,8 +91,12 @@ class TaskController extends Controller
         $task->notes    = $request->input('notes'); 
         $task->save();
         // Zwischentabelle aktualisieren
-        $task->users()->sync($request->input('users'));
-
+        $users = $task->users()->sync($request->input('users'));
+            foreach($users['attached'] as $userId)
+                {
+                    $user = User::find($userId);
+                    $user->notify(new PushToTask($task));
+                }
         return redirect("/tasks/$task->id")->with('success', 'Task wurde aktualisiert.');
     }
 

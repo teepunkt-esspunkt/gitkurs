@@ -28,7 +28,7 @@ class PushToTask extends Notification
      */
     public function via(object $notifiable): array
     {
-        return ['mail'];
+        return ['mail', 'database'];
     }
 
     /**
@@ -53,7 +53,9 @@ class PushToTask extends Notification
     public function toArray(object $notifiable): array
     {
         return [
-            //
+            'title'=>$this->task->title,
+            'url' => 'url',
+            'message'=> 'neue aufgabe',
         ];
     }
 }
